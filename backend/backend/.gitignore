@@ -1,0 +1,3 @@
+# When ever we start pushing the code for imployment, venv folder will be pushed as well, automatically
+# This folder is huge and completely unnecessary for this app to work, hence we add it to the .gitignore
+venv
