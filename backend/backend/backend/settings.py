@@ -58,6 +58,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'backend.urls'
 
+# The function below is for configuring templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -119,17 +120,21 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
+# Static files (CSS, JavaScript, Images), fonts, icons header images etc
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR), "static"]
-STATIC_ROOT = BASE_DIR / 'templates'
 
-# Media files are files that are uploaded byt the user
+# Joining the base directory with the path that will be called 'static'
+# Technically this is not necessarry since all the static  files will be coming directly from React and Django
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = BASE_DIR / 'templates' 
+
+# Media files are files that are uploaded by the user
+# To configure the media file, we need to start off by defining a media URL 
+# that Django will need to access in order to be able to get the media files for us
 MEDIA_URL = '/media/' # 127.0.0.1/media/avatar.jpg
 MEDIA_ROOT = BASE_DIR / 'media'
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
