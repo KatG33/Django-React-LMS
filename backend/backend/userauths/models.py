@@ -9,5 +9,18 @@ from django.contrib.auth.models import AbstractUser
 
 # For FUTURE: Add function, allowing user to authenticate their login using an OTP
 
-
-
+# 'unique=True' parameter ensures that a specific user name can be used only ONCE
+# The email is added as one of the parameters, so users can log in into an account 
+# using email instead of the username
+class CustomUser(AbstractUser):
+    username = models.CharField(unique=True, max_length=50)
+    email = models.EmailField(unique=True)
+    full_name = models.CharField(max_length=150)
+    # May be OTP to reset a password(?)
+    otp = models.CharField(unique=True, max_length=100)
+    
+    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = ['username']
+    
+    def __str__(self):
+        return self.email
